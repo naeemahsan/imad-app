@@ -5,21 +5,57 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne ={
-    title: 'Article One | Naeem Ahsan',
-    heading: 'Article One',
-    date: 'Aug 9, 2017',
-    content: `
-     <p>
-        This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
-    </p>
-     <p>
-        This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
-    </p>
-     <p>
-        This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
-    </p>`
+var articles = {
+    articleone: {
+        title: 'Article One | Naeem Ahsan',
+        heading: 'Article One',
+        date: 'Aug 9, 2017',
+        content: `
+         <p>
+            This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+        </p>
+         <p>
+            This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+        </p>
+         <p>
+            This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+        </p>`
+            
+        },
+    articletwo: {
+            title: 'Article Two | Naeem Ahsan',
+        heading: 'Article Two',
+        date: 'Aug 19, 2017',
+        content: `
+         <p>
+            This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+        </p>
+         <p>
+            This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+        </p>
+         <p>
+            This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+        </p>`
+            
+        },
+    articlethree: {
+            title: 'Article Three | Naeem Ahsan',
+            heading: 'Article Three',
+            date: 'Aug 29, 2017',
+            content: `
+             <p>
+                This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+            </p>
+             <p>
+                This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+            </p>
+             <p>
+                This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
+            </p>`
+            
+        }
 };
+
 
 function createTemplate(data){
         var title= data.title;
@@ -56,7 +92,7 @@ function createTemplate(data){
         </html>
         `;
         return htmlTemplate;
-}
+};
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
