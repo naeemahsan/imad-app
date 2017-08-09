@@ -9,7 +9,7 @@ var articleOne ={
     title: 'Article One | Naeem Ahsan',
     heading: 'Article One',
     date: 'Aug 9, 2017',
-    content:`
+    content: `
      <p>
         This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
     </p>
@@ -18,9 +18,7 @@ var articleOne ={
     </p>
      <p>
         This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.This the first article for the demo pages we are making.This the first article for the demo pages we are making. This the first article for the demo pages we are making. This the first article for the demo pages we are making.
-    </p>
-    
-    
+    </p>`
 };
 
 function createTemplate(data){
@@ -28,20 +26,20 @@ function createTemplate(data){
         var heading = data.heading;
         var date= data.date;
         var content = data.content;
-        var htmlTemplate=`
+        var htmlTemplate = `
         <html>
             <head>
                 <title>
                     ${title}
                 </title>
+                
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                 <link href="/ui/style.css" rel="stylesheet" />
+                <link href="/ui/style.css" rel="stylesheet" />
             </head>
             <body>
                 <div class="container">
                     <div>
                         <a href="/">Home</a>
-                        
                     </div>
                     <hr/>
                     <h3>
@@ -55,9 +53,7 @@ function createTemplate(data){
                     </div>
                 </div>
             </body>
-            
         </html>
-        
         `;
         return htmlTemplate;
 }
