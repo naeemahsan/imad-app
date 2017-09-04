@@ -124,7 +124,7 @@ app.get('/hash/:input',function(req,res){
 });
 
 
-//instead of aap.get we use app.post to keep the password secure and not logged in browser histroy
+//instead of app.get we use app.post to keep the password secure and not logged in browser histroy
 app.post('/create-user',function(req,res){
     var username = req.body.username;
     var password = req.body.password;
@@ -135,9 +135,36 @@ app.post('/create-user',function(req,res){
        if (err){
                     res.status(500).send(err.toString());
             }else {
-                    res.send('User successfully created : ' + username));
+                    res.send('User successfully created : ' + username);
             }
    });
+});
+
+app.post('/login', function(req,res){
+    var username = req.body.username;
+    var password = req.body.password;
+    
+   
+   pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err, result){
+       if (err){
+                    res.status(500).send(err.toString());
+            }else {
+                if (result.rows.length===0){
+                    res.send(403).send('No usernaem or password is invalid');
+                }else {
+                    var dbString = result.rows[0].password;
+                    var salt = dbString.split('$')[2];
+                    var hashedPassword = hash(password, salt); // Creating a hash on the password submitted
+                    if (hashedPassowrd === dbString){
+                        res.send('credentials correct');
+                    }else {
+                        res.send(400).send('username/password is invalid');
+                    }
+                }
+                    res.send('User successfully created : ' + username);
+            }
+   });
+    
 });
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
